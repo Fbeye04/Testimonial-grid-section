@@ -1,0 +1,122 @@
+@import "./reset";
+@import "./variables";
+
+@function weight($weight-name) {
+  @return map-get($base-font-weights, $weight-name);
+}
+
+@mixin flexCenter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+@mixin tablet {
+  @media (min-width: $tablet) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: $desktop) {
+    @content;
+  }
+}
+
+body {
+  @include flexCenter;
+  background-color: $light-grayish-blue;
+  min-height: 100vh;
+  font-family: $base-font-families;
+}
+
+.main-container {
+  padding: 2rem;
+}
+
+.section-container {
+  display: grid;
+  grid-template-areas:
+    "daniel"
+    "jonathan"
+    "jeanette"
+    "patrick"
+    "kira";
+  gap: 1.5rem;
+
+  .section-card {
+    padding: 1.5rem 2rem;
+    border-radius: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    font-size: 0.9rem;
+
+    .user-section {
+      display: flex;
+      flex-direction: row;
+      gap: 1rem;
+
+      img {
+        border-radius: 2rem;
+        width: 2.5rem;
+      }
+
+      .names-status {
+        font-size: 0.7rem;
+
+        h1 {
+          font-weight: weight(semi-bold);
+        }
+
+        p {
+          opacity: 0.5;
+        }
+      }
+    }
+
+    p {
+      opacity: 0.7;
+    }
+  }
+
+  #purple {
+    grid-area: daniel;
+    background-color: $moderate-violet;
+    color: $custom-white;
+  }
+
+  #gray {
+    grid-area: jonathan;
+    background-color: $very-dark-grayish-blue;
+    color: $custom-white;
+  }
+
+  #white {
+    grid-area: jeanette;
+    background-color: $custom-white;
+    color: $very-dark-grayish-blue;
+  }
+
+  #dark-blue {
+    grid-area: patrick;
+    background-color: $very-dark-blackish-blue;
+    color: $custom-white;
+  }
+
+  #white-2 {
+    grid-area: kira;
+    background-color: $custom-white;
+    color: $very-dark-grayish-blue;
+  }
+}
+
+.attribution {
+  font-size: 11px;
+  text-align: center;
+
+  a {
+    color: hsl(228, 45%, 44%);
+  }
+}
