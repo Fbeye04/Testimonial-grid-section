@@ -15,13 +15,28 @@ body {
 }
 
 .main-container {
-  padding: 2rem;
+  padding: 1.5rem;
+  margin: 2rem 0;
 }
 
 .section-container {
   display: grid;
   grid-template-areas: "daniel" "jonathan" "jeanette" "patrick" "kira";
   gap: 1.5rem;
+}
+@media (min-width: 640px) {
+  .section-container {
+    max-width: 60rem;
+  }
+}
+@media (min-width: 1080px) {
+  .section-container {
+    max-width: 65rem;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: auto;
+    gap: 1rem;
+    grid-template-areas: "daniel daniel jonathan kira" "jeanette patrick patrick kira";
+  }
 }
 .section-container .section-card {
   padding: 1.5rem 2rem;
@@ -30,6 +45,11 @@ body {
   flex-direction: column;
   gap: 1.5rem;
   font-size: 0.9rem;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out;
+}
+.section-container .section-card:hover {
+  transform: translateY(-5px);
 }
 .section-container .section-card .user-section {
   display: flex;
@@ -37,6 +57,7 @@ body {
   gap: 1rem;
 }
 .section-container .section-card .user-section img {
+  border: 0.1rem solid hsl(0, 0%, 100%);
   border-radius: 2rem;
   width: 2.5rem;
 }
@@ -56,6 +77,18 @@ body {
   grid-area: daniel;
   background-color: hsl(263, 55%, 52%);
   color: hsl(0, 0%, 100%);
+  position: relative;
+}
+.section-container #purple .user-section,
+.section-container #purple h2,
+.section-container #purple p {
+  position: relative;
+}
+.section-container #purple #quotation {
+  width: 7rem;
+  position: absolute;
+  top: 0.5rem;
+  right: 1rem;
 }
 .section-container #gray {
   grid-area: jonathan;
@@ -79,8 +112,16 @@ body {
 }
 
 .attribution {
-  font-size: 11px;
+  font-size: 0.8rem;
   text-align: center;
+}
+@media (min-width: 1080px) {
+  .attribution {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
 }
 .attribution a {
   color: hsl(228, 45%, 44%);
